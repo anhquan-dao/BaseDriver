@@ -1,0 +1,6 @@
+.pio
+**/.vscode/
+**/src
+src/
+*.pyc
+.vscode/
