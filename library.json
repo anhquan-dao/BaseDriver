@@ -1,0 +1,11 @@
+{
+    "name": "BaseDriver",
+    "version": "0.0.0+20220806141423",
+    "headers": "Base.h",
+    "build":[
+        {
+            "srcDir": "src",
+            "includeDir": "src"
+            }
+    ]
+  }

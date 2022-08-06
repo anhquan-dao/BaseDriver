@@ -1,6 +1,7 @@
 .pio
 **/.vscode/
-**/src
-src/
+/src/main.cpp
 *.pyc
 .vscode/
+custom_part.csv
+platformio.ini
