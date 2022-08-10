@@ -55,3 +55,47 @@ void BaseInterface::writeByte(uint8_t *data, uint8_t size)
 #endif
     }
 }
+
+uint8_t BaseInterface::readByte(uint8_t* buffer, uint8_t size)
+{
+    uint8_t actual_size = Serial.read(buffer, size);
+    return actual_size;
+
+}
+
+uint8_t BaseInterface::readByte(uint8_t* buffer)
+{   
+    return readByte(buffer, 1);
+}
+
+void BaseInterface::readFloat(float *data)
+{
+    uint8_t buffer[4];
+    readByte(buffer, 4);
+    data = (float *)buffer;
+}
+
+void BaseInterface::readHeader(uint8_t *header)
+{
+    readByte(header);
+}
+
+void BaseInterface::readHeader()
+{   
+    header_buf[0] = header_buf[1];
+    readByte(&header_buf[1]);
+}
+
+uint8_t BaseInterface::readMessage(uint8_t *header, uint8_t *buffer)
+{
+    uint8_t data_len;
+
+    while(*header != 0x43)
+    {
+        readHeader(header);
+    }
+    readByte(&data_len);
+    readByte(buffer, data_len);
+    
+    return 0;
+}

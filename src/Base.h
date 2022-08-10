@@ -122,6 +122,13 @@ class BaseInterface
         }
         void writeFloat(float data);
 
+        uint8_t readByte(uint8_t *buffer, uint8_t size);
+        uint8_t readByte(uint8_t *buffer);
+        void readFloat(float *data);
+        void readHeader(uint8_t *header);
+        void readHeader();
+        uint8_t readMessage(uint8_t *header, uint8_t *buffer);
+
         uint8_t id;
         BaseHeader *header;
         uint8_t header_code;
@@ -132,9 +139,6 @@ class BaseInterface
 
         state_t state;
 
-        
-
-        
-
+        uint8_t header_buf[2];
 };
 
